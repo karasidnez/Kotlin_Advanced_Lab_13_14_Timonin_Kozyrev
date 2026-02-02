@@ -25,12 +25,6 @@ class Quiz : ProgressPrintable {
     override val progressText: String
         get() = "${answered} of ${total} answered"
 
-    override fun printProgressBar() {
-        repeat(Quiz.answered) {print("▓") }
-        repeat(Quiz.total - Quiz.answered) {print("▒")}
-        println()
-        println(progressText)
-
     val  question1 = Question<String>(
         "Речка спятила с ума - По домам пошла сама. ___",
         "Водопровод",
@@ -47,13 +41,41 @@ class Quiz : ProgressPrintable {
         Difficulty.HARD
 
     )
+    override fun printProgressBar() {
+        repeat(Quiz.answered) { print("▓") }
+        repeat(Quiz.total - Quiz.answered) { print("▒") }
+        println()
+        println(progressText)
+    }
+    fun printQuiz(){
+        question1.let{
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+
+        question2.let{
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+
+        question3.let{
+            println(it.questionText)
+            println(it.answer)
+            println(it.difficulty)
+        }
+        println()
+    }
+
 
 }
 
 
-}
+
 
 fun main() {
-    Quiz().printProgressBar()
-
+    Quiz().apply { printQuiz() }
 }
