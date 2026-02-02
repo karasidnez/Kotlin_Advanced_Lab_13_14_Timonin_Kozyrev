@@ -12,8 +12,7 @@ object StudentProgress{
     var total: Int = 10
     var answered: Int = 3
 }
-
-fun main() {
+class Quiz{
     val  question1 = Question<String>(
         "Речка спятила с ума - По домам пошла сама. ___",
         "Водопровод",
@@ -30,12 +29,13 @@ fun main() {
         Difficulty.HARD
 
     )
-    println(question1.answer)
-    println(question2.answer)
-    println(question3.answer)
-    println(question1.toString())
+    companion object StudentProgress{
+        var total: Int = 10
+        var answered: Int = 3
+    }
+}
 
-    println("${StudentProgress.answered} of ${StudentProgress.total} answered.")
+fun main() {
 
-
+    println("${Quiz.answered} of ${Quiz.total} answered.")
 }
